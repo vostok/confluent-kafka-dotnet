@@ -17,7 +17,7 @@ build_script:
   - dotnet build Confluent.Kafka.sln -c %CONFIGURATION%
   - dotnet build src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% %STRONG_NAME_OPTIONS%
   - cmd: IF "%APPVEYOR_REPO_TAG%" == "true" (dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION%  &  dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% %STRONG_NAME_OPTIONS%)
-  - cmd: IF NOT "%APPVEYOR_REPO_TAG%" == "true" (dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% --version-suffix ci-%APPVEYOR_BUILD_NUMBER%  &  dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% %STRONG_NAME_OPTIONS% --version-suffix ci-%APPVEYOR_BUILD_NUMBER%)
+  - cmd: IF NOT "%APPVEYOR_REPO_TAG%" == "true" (dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% --version-suffix vostok-%APPVEYOR_BUILD_NUMBER%  &  dotnet pack src/Confluent.Kafka/Confluent.Kafka.csproj -c %CONFIGURATION% %STRONG_NAME_OPTIONS% --version-suffix vostok-%APPVEYOR_BUILD_NUMBER%)
 
 test_script:
  - dotnet test -c %CONFIGURATION% --no-build test/Confluent.Kafka.UnitTests/Confluent.Kafka.UnitTests.csproj
